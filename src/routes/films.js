@@ -1,7 +1,6 @@
 import express, { request } from "express";
-import { auth } from "../middlewares/middlewares";
-
 import mocks from "../../Datos/mocks";
+import { auth_token } from "../middlewares/middlewares_perfil";
 
 const router = express.Router();
 
@@ -16,7 +15,7 @@ router.get("/", (req, res, next) => {
  * Método que elimina la película que se pasa por parámetro (magic param), 
  * Debe de estar autorizado
  */
-router.delete("/:nombre", auth, (req, res, next) => {
+router.delete("/:nombre",  (req, res, next) => {
   console.log(req.params.nombre);
   mocks.splice(
     mocks.findIndex((item) => item.nombre === req.params.nombre), 1 );
@@ -28,7 +27,7 @@ router.delete("/:nombre", auth, (req, res, next) => {
  * Método para añadir una película pasada en el body 
  * Se necesita Autorización, por lo que para llamar a este método, se debe obtener el token previamente
  */
-router.post("/", auth,(req, res, next) => {
+router.post("/",auth_token, (req, res, next) => {
   mocks.push(req.body);
   res.status(200).json(mocks);
 });
@@ -36,7 +35,7 @@ router.post("/", auth,(req, res, next) => {
 /**
  * Método para modificar una película pasada por magic param(El nombre de la pelicula)
  */
-router.put("/:nombre", (req, res, next) => {
+router.put("/:nombre",auth_token, (req, res, next) => {
   mocks.splice(
     mocks.findIndex((item) => item.nombre === req.params.nombre),
     1

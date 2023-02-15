@@ -1,6 +1,4 @@
 import express from 'express'
-const mongoose = require('mongoose');
-import mocks from '../Datos/mocks'
 import config from './config'
 import router from '../router'
 

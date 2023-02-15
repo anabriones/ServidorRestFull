@@ -22,7 +22,7 @@ router.get("/:email", auth_token, (req, res) => {
 /**
  * Se obtienen todos los usuarios de la base de datos
  */
-router.get("/", auth_token, (req, res) => {
+router.get("/",  (req, res) => {
   res.status(200).json(USERS_BBDD);
 });
 
