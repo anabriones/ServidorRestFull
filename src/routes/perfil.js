@@ -1,9 +1,16 @@
-import { USERS_BBDD } from "../../Datos/bbdd.js";
+import { USERS_BBDD } from "../datos/bbdd.js";
 
 import { Router } from "express";
 import { auth_token } from "../middlewares/middlewares_perfil";
 
 const router = Router();
+
+/**
+ * Se obtienen todos los usuarios de la base de datos
+ */
+router.get("/",  (req, res) => {
+  res.status(200).json(USERS_BBDD);
+});
 
 /**
  * Solicitud autenticada con token para obtener el perfil del usuario
@@ -19,24 +26,27 @@ router.get("/:email", auth_token, (req, res) => {
   return res.send(user);
 });
 
-/**
- * Se obtienen todos los usuarios de la base de datos
- */
-router.get("/",  (req, res) => {
-  res.status(200).json(USERS_BBDD);
-});
 
 /**
  * Se añade un nuevo usario a la base de datos
  */
+router.post("/register", (req, res) => {
 
-router.post("/", auth_token, (req, res) => {
-  USERS_BBDD.push(req.body);
-  res.status(200).json(USERS_BBDD);
+  const user = USERS_BBDD.find((user) => user.email === req.params.email);
+
+  if (user == null) {
+    USERS_BBDD.push(req.body);
+
+    res.status(200).json(USERS_BBDD);
+  } else {
+    res.status(401).json(USERS_BBDD);
+    
+  }
+  
 });
 
 /**
- * Se añade elimina un usario de la base de datos
+ * Se elimina un usuario de la base de datos
  */
 router.delete("/:email", auth_token, (req, res) => {
   const user = USERS_BBDD.find((user) => user.email === req.params.email);

@@ -7,7 +7,6 @@ import { config } from 'dotenv'
 
 
 const SETTINGS = config()
-//console.log(SETTINGS)
 
 export default app => {
   app.disable('x-powered-by')
@@ -28,5 +27,6 @@ export default app => {
   //gestiona automaticamente las cabeceras de la API 
   app.use(cors())
 
+  
   
 }

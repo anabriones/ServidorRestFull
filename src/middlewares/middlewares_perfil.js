@@ -4,7 +4,7 @@ import jwt from 'jwt-simple'
  * @param {*} req  cabecera
  * @param {*} res respuesta de peticion
  * @param {*} next 
- * @returns retorna un token que es creado al insertar en el body un email
+ * @returns retorna un token que es creado al insertar en el body un email y contraseña
  */
 export const auth_token = (reqU, resU, next) => {
   if (!reqU.headers.authorization) {
@@ -14,7 +14,7 @@ export const auth_token = (reqU, resU, next) => {
   }
 
   const token = reqU.headers.authorization.split(' ')[1]
-  const payload = jwt.decode(token, reqU.app.locals.config.JWT_PRIVATE_KEY)   //Creado en .env  (Variables de entorno)
+  const payload = jwt.decode(token, reqU.app.locals.config.JWT_PRIVATE_KEY )   //Creado en .env  (Variables de entorno)
 
   reqU.user = payload.email
 

@@ -10,3 +10,4 @@ export default app=>{
     app.use('/profile',profile)// Desde esta ruta se puede hacer GET de todos los usuarios o de uno en particular
 
 }
+
