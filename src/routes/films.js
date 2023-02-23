@@ -8,7 +8,7 @@ const router = express.Router();
  * Método que devuelve todas las peliculas en formato json
  */
 router.get("/", (req, res, next) => {
-  if(!mocks){
+  if(peliculas){
       res.status(200).json(peliculas);
   }
   else{
