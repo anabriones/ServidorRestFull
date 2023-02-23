@@ -15,7 +15,8 @@ routerlogin.post("/login", (req, res, next) => {
     //No hace falta comprobar si guid es null porque authByEmailPwd nos devuelve error en el caso de no cumplirse la validación
     //const token = jwt.encode( {user} , req.app.locals.config.JWT_PRIVATE_KEY, "HS256", {iat: moment().unix(), exp: moment().add(5, 'hours').unix()}); //Se rea el token para que se pueda acceder a las rutas que lo requieran
  
-    const token= jwt.encode({ user, exp: Date.now()/1000 + 200},req.app.locals.config.JWT_PRIVATE_KEY );
+    const token= jwt.encode({ user, exp: Date.now()/1000 
+    + process.env.JWT_EXPIRES_IN},req.app.locals.config.JWT_PRIVATE_KEY );
 console.log(token);
     return res.send({ token }); //Node devuelve el token creado previenmente
   } else {
