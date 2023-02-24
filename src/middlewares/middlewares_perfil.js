@@ -16,7 +16,7 @@ export const auth_token = (reqU, resU, next) => {
   const token = reqU.headers.authorization.split(' ')[1]
   const payload = jwt.decode(token, reqU.app.locals.config.JWT_PRIVATE_KEY )   //Creado en .env  (Variables de entorno)
 
-  reqU.user = payload.email
+  reqU.user = payload
 
   next()
 }

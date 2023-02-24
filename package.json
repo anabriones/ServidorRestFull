@@ -9,16 +9,16 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:jmanuelrosa/curso-nodejs-openwebinars.git"
+    "url": "https://github.com/anabriones/ServidorRestFull.git"
   },
   "homepage": "",
   "author": {
-    "name": "José Manuel Rosa Moncayo",
-    "email": "josemanuel.rosamoncayo@gmail.com"
+    "name": "Ana del Mar Briones Salgado",
+    "email": "extadm@oesia.com"
   },
   "bugs": {
-    "url": "https://github.com/jmanuelrosa/curso-nodejs-openwebinars/issues",
-    "email": "josemanuel.rosamoncayo@gmail.com"
+    "url": "https://github.com/anabriones/ServidorRestFull.git",
+    "email": "extadm@oesia.com"
   },
   "engines": {
     "node": ">= 9.3.0",

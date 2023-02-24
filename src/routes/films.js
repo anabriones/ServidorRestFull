@@ -22,12 +22,14 @@ router.get("/", (req, res, next) => {
  * Debe de estar autorizado
  */
 router.delete("/:nombre", auth_token, (req, res, next) => {
+  if( peliculas.findIndex((item) => item.nombre === req.params.nombre)>=1){
   const film= peliculas.splice(
     peliculas.findIndex((item) => item.nombre === req.params.nombre),
     1
   );
-if(film)
+
   res.status(200).json(peliculas);
+  }
   else{
     res.status(402).json('Ha habido un error al eliminar la pelicula');
   }
