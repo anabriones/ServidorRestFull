@@ -6,7 +6,7 @@ import jwt from 'jwt-simple'
  * @param {*} next 
  * @returns retorna un token que es creado al insertar en el body un email y contraseña
  */
-export const auth_token = (reqU, resU, next) => {
+export const auth_token = async (reqU, resU, next) => {
   if (!reqU.headers.authorization) {
     return resU
       .status(401)
@@ -18,5 +18,5 @@ export const auth_token = (reqU, resU, next) => {
 
   reqU.user = payload
 
-  next()
+ await next()
 }
