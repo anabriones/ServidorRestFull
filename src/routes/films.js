@@ -22,14 +22,16 @@ router.get("/", (req, res, next) => {
  * Debe de estar autorizado
  */
 router.delete("/:nombre", auth_token, (req, res, next) => {
- const pelicula= peliculas.findIndex((item) => item.nombre === req.params.nombre);
- if(pelicula){
- peliculas.splice(pelicula,1);
+  const film= peliculas.splice(
+    peliculas.findIndex((item) => item.nombre === req.params.nombre),
+    1
+  );
+if(film)
   res.status(200).json(peliculas);
- }
- else{
-  res.status(401).json('No se ha encontrado la pelicula que quieres eliminar');
- }
+  else{
+    res.status(402).json('Ha habido un error al eliminar la pelicula');
+  }
+  
 });
 
 /**
@@ -50,18 +52,23 @@ router.post("/", auth_token, (req, res, next) => {
  * eliminarla y añadirla con los datos que se han pasado por parámetro
  */
 router.put("/:nombre", auth_token, async (req, res, next) => {
-  const pelicula = peliculas.findIndex(
-    (item) => item.nombre === req.params.nombre
+ const film= peliculas.splice(
+    peliculas.findIndex((item) => item.nombre === req.params.nombre),
+    1
   );
-  if (pelicula) {
-    peliculas.splice(pelicula, 1);
-    peliculas.push(req.body);
-
-    await res.status(200).json(req.body);
-  } else {
-    await res.status(401).json("La pelicula no existe");
+  peliculas.push(req.body);
+if(film)
+  res.status(200).json(peliculas);
+  else{
+    res.status(402).json('Ha habido un error al modificar la pelicula');
   }
-});
+  }
+ );
+ 
+
+
+  
+
 
 /**
  * Método para obtener una película pasada por magic param(El nombre de la pelicula)
