@@ -1,4 +1,4 @@
-export default [
+export const PELICULAS= [
   {
     nombre: "Los renglones torcidos de Dios",
     plataforma: "HBO",
