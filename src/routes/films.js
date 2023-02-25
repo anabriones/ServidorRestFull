@@ -64,7 +64,7 @@ router.put("/:nombre", auth_token, async (req, res, next) => {
   res.status(404).send("No se ha encontrado la pelicula");
   } else {
 
-     PELICULAS.splice(PELICULAS.find((film) => film.nombre === req.params.nombre),1);
+     PELICULAS.splice(PELICULAS.findIndex((film) => film.nombre === req.params.nombre),1);
     PELICULAS.push(req.body);
     
     res.status(200).send(PELICULAS);
