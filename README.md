@@ -3,15 +3,15 @@
  Servidor con servicio de Login , que permite crear, modificar, borrar y obtener registros.
  Creación de token para direcciones con "privilegios"
 
- Es un servidor con "2 Bases de Datos", que se guardan en ficheros json, en una se almacenan los usuarios y en la otra películas. 
+ Es un servidor con "2 Bases de Datos", que se guardan en ficheros json, en una se almacenan los usuarios y en la otra películas.
 
- Los usuarios podrán iniciar sesión y registrarse, a la vez de poder ver el listado de películas, eliminar peliculas, modificar peliculas y crearlas. 
+ Los usuarios podrán iniciar sesión y registrarse, a la vez de poder ver el listado de películas, eliminar peliculas, modificar peliculas y crearlas.
 
- Para eliminar películas así como modificarlas se hace uso de la función `splice` que elimina valores de un json según el índice que se indique y las posiciones a eliminar a partir de este. 
+ Para eliminar películas así como modificarlas se hace uso de la función `splice` que elimina valores de un json según el índice que se indique y las posiciones a eliminar a partir de este.
 
  para la modificación se hace un splice primero en el fichero json seguido de un `push`.
 
-# Instalación de software
+# Instalación Software
 
 Para que la aplicación funcione es necesario tener las siguientes dependencias instaladas:
 
@@ -41,10 +41,13 @@ En este fichero se encuentra la configuración del servidor, como son el puerto,
 
 El token se crea cuando el usuario hace login con la libreria jwt-simple.
 
-# POST - GET _ DELETE - PUT 
+# POST - GET _ DELETE - PUT
 
-Los métodos para modiciar, crear y eliminar películas necesitan la creación previa del token, por lo tanto al invocarlos se les debe pasar el token mediante la cabecera en el Authetication. 
+Los métodos para modiciar, crear y eliminar películas necesitan la creación previa del token, por lo tanto al invocarlos se les debe pasar el token mediante la cabecera en el Authetication.
 
-Los metodos GET he decidido que puedan ser invocados siempre, puesto que no son datos comprometidos. 
+Los metodos GET he decidido que puedan ser invocados siempre, puesto que no son datos comprometidos.
 
+# Tiempo del token
 
+Como las variables de entorno se guardan como string, se debe de hacer la conversión a entero.
+El tiempo en jwt-simple se le pasa por la "directiva" `exp: tiempo`
