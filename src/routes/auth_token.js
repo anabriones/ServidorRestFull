@@ -15,9 +15,9 @@ routerlogin.post("/login", (req, res, next) => {
     //En el .env todas las variables se obtienen como string, por lo que hay que convertirlo
      let tiempo = parseInt(process.env.JWT_EXPIRES_IN,10);
  
-    const token= jwt.encode({ user, exp: Date.now()/1000 +tiempo},req.app.locals.config.JWT_PRIVATE_KEY );
+       const token= jwt.encode({ user, exp: Date.now()/1000 +tiempo},req.app.locals.config.JWT_PRIVATE_KEY );
 
-    return res.send({ token }); //Node devuelve el token creado previenmente
+         return res.send({ token }); //Node devuelve el token creado previenmente
   } else {
     //en el caso de no existir el usuario en la base de datos se lanza un error
     return new Error();

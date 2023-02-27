@@ -14,3 +14,5 @@ export const USERS_BBDD = [
       isActive: true,     
     },
   ];
+
+  export default USERS_BBDD;
